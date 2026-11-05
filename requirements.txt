@@ -1,0 +1,9 @@
+# Most tools use only the Python standard library (tkinter is included with Python for Windows).
+# These packages are needed by a few tools:
+pynput      # automation/auto_clicker.py
+keyboard    # automation/auto_pager.py
+pyperclip   # automation/clipboard_collector.py
+tqdm        # renaming/onedrive_name_fixer.py (command-line mode only)
+
+# Optional, for better detection in files/file_type_fixer.py:
+# python-magic-bin

@@ -1,0 +1,82 @@
+Windows Registry Editor Version 5.00
+
+; Windows 11 Declutter
+; Turns off ads, tips, Widgets, web search in Start, the taskbar search box,
+; Copilot, edge swipes and silent app installs.
+; Undo: run windows11_declutter_undo.reg, then sign out and back in.
+; Manual: docs/windows11_declutter.md
+
+; --- Touchscreen: no swipe-in from the screen edges ---
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"AllowEdgeSwipe"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"AllowEdgeSwipe"=dword:00000000
+
+; --- Start menu search: no web (Bing) results ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=dword:00000001
+
+; --- Taskbar: hide the search box (same as Settings > Personalization > Taskbar > Search > Hide) ---
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=dword:00000000
+
+; --- Widgets (news and weather): off ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh]
+"AllowNewsAndInterests"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests]
+"value"=dword:00000000
+
+; --- Copilot ---
+; Older Copilot sidebar: off.
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=dword:00000001
+
+; Newer Copilot app: Windows removes it (Pro, Enterprise and Education only,
+; and only under Microsoft's conditions; see the manual).
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsAI]
+"RemoveMicrosoftCopilotApp"=dword:00000001
+
+; --- Ads, tips and suggestions ---
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+; No apps installed without asking
+"SilentInstalledAppsEnabled"=dword:00000000
+; Lock screen: no fun facts, tips and tricks
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+"SubscribedContent-338387Enabled"=dword:00000000
+; "Get tips and suggestions when using Windows" notifications
+"SubscribedContent-338389Enabled"=dword:00000000
+"SoftLandingEnabled"=dword:00000000
+; Settings app: no suggested content
+"SubscribedContent-338393Enabled"=dword:00000000
+"SubscribedContent-353694Enabled"=dword:00000000
+"SubscribedContent-353696Enabled"=dword:00000000
+; No "welcome experience" after updates
+"SubscribedContent-310093Enabled"=dword:00000000
+; Older Start menu suggestions
+"SystemPaneSuggestionsEnabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+; Start menu: no recommendations for tips, shortcuts and new apps
+"Start_IrisRecommendations"=dword:00000000
+; Start menu: no account-related notifications
+"Start_AccountNotifications"=dword:00000000
+; File Explorer: no OneDrive and other sync provider notifications
+"ShowSyncProviderNotifications"=dword:00000000
+
+; No "Finish setting up your device" screen
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+"ScoobeSystemSettingEnabled"=dword:00000000
+
+; --- Privacy ---
+; Advertising ID: off
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000000
+
+; Tailored experiences (tips and offers based on diagnostic data): off
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000000

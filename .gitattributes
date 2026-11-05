@@ -1,2 +1,4 @@
 # Keep Windows batch files with CRLF line endings when checked out
 *.bat text eol=crlf
+# Registry files keep CRLF line endings too
+*.reg text eol=crlf

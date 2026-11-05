@@ -1,8 +1,8 @@
 # Windows Utilities
 
-A collection of small Python tools for Windows that rename, copy, sort, check and clean up files and folders, plus a few desktop helpers.
+A collection of small Python tools for Windows that rename, copy, sort, check and clean up files and folders, plus a few desktop helpers and a registry file that declutters Windows 11.
 
-Each tool is a single Python file. Most open a simple window. Each one has its own short manual in the `docs` folder.
+Each tool is a single Python file, except Windows 11 Declutter, which is a pair of registry files. Most open a simple window. Each one has its own short manual in the `docs` folder.
 
 ## The tools
 
@@ -21,6 +21,7 @@ Each tool is a single Python file. Most open a simple window. Each one has its o
 | `copying/` | `robocopy_gui.py` | A window for the Windows `robocopy` command, with live output and a log. | [docs/robocopy_gui.md](docs/robocopy_gui.md) |
 | `google-drive/` | `google_drive_file_transfer.py` | Finds Google Docs/Sheets/Slides link files (`.gdoc`, `.gsheet` ...) and copies or moves them to one folder. | [docs/google_drive_file_transfer.md](docs/google_drive_file_transfer.md) |
 | `system/` | `long_paths_toggle.py` | Shows, turns on or turns off the Windows "long paths" setting. | [docs/long_paths_toggle.md](docs/long_paths_toggle.md) |
+| `system/` | `windows11_declutter.reg` | Turns off ads, tips, Widgets, Copilot, web search in Start and the taskbar search box. `windows11_declutter_undo.reg` turns them back on. | [docs/windows11_declutter.md](docs/windows11_declutter.md) |
 | `automation/` | `auto_clicker.py` | Clicks the left mouse button 10 times a second until you stop it. | [docs/auto_clicker.md](docs/auto_clicker.md) |
 | `automation/` | `auto_pager.py` | Presses Page Down at a set speed, for hands-free reading. | [docs/auto_pager.md](docs/auto_pager.md) |
 | `automation/` | `clipboard_collector.py` | Records text you copy into a table and saves it as CSV. | [docs/clipboard_collector.md](docs/clipboard_collector.md) |
@@ -41,12 +42,14 @@ Each tool is a single Python file. Most open a simple window. Each one has its o
 
 1. Open the manual for the tool you want from the table above.
 2. Start the tool with `python <folder>\<tool>.py`, for example `python renaming\batch_renamer.py`. You can also double-click the `.py` file.
+3. The `.reg` files need no Python: double-click them (see their manual).
 
 ## Safety notes
 
 - Tools that rename, move or change settings show what they will do and ask before they do it.
 - Existing files are not overwritten. When a name is taken, the tool adds a number to the new name.
 - Each manual has its own "Safety notes" section that explains what that tool changes and how to undo it.
+- `windows11_declutter.reg` changes Windows settings when you double-click it. Run `windows11_declutter_undo.reg` to put them back.
 
 ## How it works
 

@@ -1,0 +1,65 @@
+Windows Registry Editor Version 5.00
+
+; Windows 11 Declutter - UNDO
+; Puts back the normal Windows behavior for every setting in windows11_declutter.reg.
+; Settings that were removed go back to the Windows default.
+; Switches that windows11_declutter.reg turned off are turned back on.
+; This does not reinstall the Copilot app. Get it again from the Microsoft Store if you want it.
+; Sign out and back in afterwards.
+
+; --- Touchscreen edge swipes ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\EdgeUI]
+"AllowEdgeSwipe"=-
+
+; --- Start menu search web results ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=-
+
+[HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Windows\Explorer]
+"DisableSearchBoxSuggestions"=-
+
+; --- Taskbar search box (Windows default) ---
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=-
+
+; --- Widgets ---
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Dsh]
+"AllowNewsAndInterests"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests]
+"value"=dword:00000001
+
+; --- Copilot ---
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot]
+"TurnOffWindowsCopilot"=-
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsAI]
+"RemoveMicrosoftCopilotApp"=-
+
+; --- Ads, tips and suggestions (back on, as Windows normally has them) ---
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"SilentInstalledAppsEnabled"=dword:00000001
+"RotatingLockScreenOverlayEnabled"=dword:00000001
+"SubscribedContent-338387Enabled"=dword:00000001
+"SubscribedContent-338389Enabled"=dword:00000001
+"SoftLandingEnabled"=dword:00000001
+"SubscribedContent-338393Enabled"=dword:00000001
+"SubscribedContent-353694Enabled"=dword:00000001
+"SubscribedContent-353696Enabled"=dword:00000001
+"SubscribedContent-310093Enabled"=dword:00000001
+"SystemPaneSuggestionsEnabled"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"Start_IrisRecommendations"=dword:00000001
+"Start_AccountNotifications"=dword:00000001
+"ShowSyncProviderNotifications"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement]
+"ScoobeSystemSettingEnabled"=-
+
+; --- Privacy ---
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy]
+"TailoredExperiencesWithDiagnosticDataEnabled"=dword:00000001
